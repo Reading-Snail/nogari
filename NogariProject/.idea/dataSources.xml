@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="NograiDB" uuid="fb3cf680-0d2c-494d-9231-fe275bbfe50a">
+      <driver-ref>oracle.19</driver-ref>
+      <synchronize>true</synchronize>
+      <configured-by-url>true</configured-by-url>
+      <auto-commit>false</auto-commit>
+      <jdbc-driver>oracle.jdbc.OracleDriver</jdbc-driver>
+      <jdbc-url>jdbc:oracle:thin:@nogaridb_medium?TNS_ADMIN=$PROJECT_DIR$/../../../Wallet_nogariDB/</jdbc-url>
+      <jdbc-additional-properties>
+        <property name="TNSADMIN_DIR" value="$PROJECT_DIR$/../../../Wallet_nogariDB/" />
+      </jdbc-additional-properties>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+  </component>
+</project>
