@@ -1,0 +1,17 @@
+CREATE TABLE "MESSAGE" (
+                           "ID"	        VARCHAR2(20)	NOT NULL,
+                           "TYPE_CD"	    VARCHAR2(2)		NULL,
+                           "DESCRIPTION"	VARCHAR2(2000)	NULL,
+                           "REG_DT"	        VARCHAR2(20)	DEFAULT TO_CHAR(CURRENT_DATE,'YYYYMMDDHH24MISS')	NOT NULL,
+                           "REG_ID"	        VARCHAR2(10)	NOT NULL,
+                           "UPD_DT"	        VARCHAR2(20)	DEFAULT TO_CHAR(CURRENT_DATE,'YYYYMMDDHH24MISS')	NOT NULL,
+                           "UPD_ID"	        VARCHAR2(10)	NOT NULL
+);
+
+COMMENT ON COLUMN "MESSAGE"."ID" IS '메세지코드';
+COMMENT ON COLUMN "MESSAGE"."TYPE_CD" IS '메세지타입 (C:CONFIRM, A:ALERT)';
+COMMENT ON COLUMN "MESSAGE"."DESCRIPTION" IS '메세지설명';
+COMMENT ON COLUMN "MESSAGE"."REG_DT" IS '등록일';
+COMMENT ON COLUMN "MESSAGE"."REG_ID" IS '등록자';
+COMMENT ON COLUMN "MESSAGE"."UPD_DT" IS '수정일시';
+COMMENT ON COLUMN "MESSAGE"."UPD_ID" IS '수정자';

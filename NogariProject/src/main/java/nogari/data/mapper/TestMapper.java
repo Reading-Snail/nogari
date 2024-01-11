@@ -9,5 +9,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 @Mapper
 public interface TestMapper {
-    public Integer test(String findStr);
+    public String test();
 }
