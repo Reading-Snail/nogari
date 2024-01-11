@@ -7,7 +7,7 @@
       <configured-by-url>true</configured-by-url>
       <auto-commit>false</auto-commit>
       <jdbc-driver>oracle.jdbc.OracleDriver</jdbc-driver>
-      <jdbc-url>jdbc:oracle:thin:@nogaridb_medium?TNS_ADMIN=$PROJECT_DIR$/../../../Wallet_nogariDB/</jdbc-url>
+      <jdbc-url>jdbc:oracle:thin:@nogaridb_medium?TNS_ADMIN=$PROJECT_DIR$/src/main/resources/Wallet_nogariDB</jdbc-url>
       <jdbc-additional-properties>
         <property name="TNSADMIN_DIR" value="$PROJECT_DIR$/../../../Wallet_nogariDB/" />
       </jdbc-additional-properties>
