@@ -1,4 +1,4 @@
-package nogari.data.entity;
+package nogari.data.jpa.entity;
 
 import lombok.Data;
 import org.springframework.context.annotation.Configuration;
@@ -11,9 +11,9 @@ import javax.persistence.Id;
 @Entity
 public class Message {
     @Id
-    private Long id;
+    private String cd;
     @Column
-    private String typeCd;
+    private String type;
     @Column
     private String description;
     @Column

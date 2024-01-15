@@ -1,17 +1,13 @@
 package nogari.data.repository;
 
-import lombok.AllArgsConstructor;
-import nogari.data.entity.Message;
-import nogari.data.entity.dto.MessageDto;
+import nogari.data.jpa.entity.Message;
+import nogari.data.jpa.repository.MessageRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import javax.persistence.Entity;
-import javax.persistence.EntityManager;
-
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+
 @SpringBootTest
 class MessageRepositoryTest {
     private final MessageRepository messageRepository;
@@ -19,7 +15,7 @@ class MessageRepositoryTest {
     public MessageRepositoryTest(MessageRepository messageRepository) {
         this.messageRepository = messageRepository;
     }
-    /**
+    /**void
      * 메세지 저장 테스트
      */
     @Test

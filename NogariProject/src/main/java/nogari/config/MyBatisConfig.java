@@ -1,4 +1,4 @@
-package nogari;
+package nogari.config;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;

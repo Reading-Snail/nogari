@@ -1,6 +1,6 @@
 package nogari.service;
 
-import nogari.data.mapper.TestMapper;
+import nogari.data.mybatis.mapper.TestMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,22 +1,12 @@
 package nogari.service;
 
-import lombok.AllArgsConstructor;
-import nogari.data.entity.Message;
-import nogari.data.entity.dto.MessageDTO;
-import nogari.data.repository.MessageRepository;
-import org.modelmapper.ModelMapper;
-import org.springframework.stereotype.Service;
+import nogari.data.jpa.entity.Message;
+import nogari.data.jpa.entity.dto.MessageDTO;
 
-@Service
-@AllArgsConstructor
-public class MessageService {
+    public interface MessageService {
+        public void createMessage(Message message);
 
-    private final MessageRepository messageRepository;
-    private final ModelMapper modelMapper;
+        Iterable<Message> getMessage();
 
-
-    public void saveMessage(MessageDTO messageDTO){
-        Message message = modelMapper.map(messageDTO, Message.class);
-        messageRepository.save(message);
+        void deleteMessageByCd(String messageCd);
     }
-}

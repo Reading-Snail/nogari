@@ -1,4 +1,4 @@
-package nogari.data.entity.dto;
+package nogari.data.jpa.entity.dto;
 
 import lombok.Builder;
 import lombok.Data;
@@ -10,7 +10,7 @@ import javax.persistence.Id;
 @Data
 @Builder
 public class MessageDTO {
-    private Long id;
+    private String cd;
     private String typeCd;
     private String description;
     private String regDt;
