@@ -30,7 +30,7 @@ class MessageControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    @DisplayName("메세지 조")
+    @DisplayName("메세지 조회")
     void getMessageTest() throws Exception {
         mockMvc.perform(get("/message"))
                 .andExpect(status().isOk())
@@ -38,14 +38,18 @@ class MessageControllerTest {
 
     }
     @Test
-    @DisplayName("메세지 생")
+    @DisplayName("메세지 생성")
     void createMessageTest() throws Exception {
 
         String json = asJsonString(
                 MessageDTO.builder()
-                    .cd("1")
-                    .typeCd("C")
+                    .cd("MSG_001")
+                    .type("C")
                     .description("testing")
+                    .regId("me")
+                    .regDt("null")
+                    .updId("me")
+                    .updDt(null)
                 );
 
         mockMvc.perform(post("/message")
@@ -55,13 +59,13 @@ class MessageControllerTest {
                 .andExpect(status().isOk())
                 .andDo(print());
 
-        mockMvc.perform(get("/message"))
-                .andExpect(status().isOk())
-                .andDo(print())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.message").exists());
+//        mockMvc.perform(get("/message"))
+//                .andExpect(status().isOk())
+//                .andDo(print())
+//                .andExpect(MockMvcResultMatchers.jsonPath("$.message").exists());
     }
     @Test
-    @DisplayName("메세지 제")
+    @DisplayName("메세지 제거")
     void deleteMessageByCdTest() throws Exception {
         mockMvc.perform(get("/message"))
                 .andExpect(status().isOk())

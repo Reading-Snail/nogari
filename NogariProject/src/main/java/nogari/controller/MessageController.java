@@ -31,7 +31,8 @@ public class MessageController {
     }
     @PostMapping("")
     @ResponseStatus(HttpStatus.OK)
-    public void createMessage(MessageDTO messageDTO){
+    public void createMessage(@RequestBody MessageDTO messageDTO){
+        log.info(messageDTO.toString());
         messageService.createMessage(convertToEntity(messageDTO));
     }
     @DeleteMapping("/{messageCd}")

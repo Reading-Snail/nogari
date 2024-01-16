@@ -21,9 +21,9 @@ public class MessageServiceImp implements MessageService {
         return messageRepository.findAll();
     }
     public void createMessage(Message message){
-        messageRepository.save(message);
+        messageRepository.saveAndFlush(message);
     }
     public void deleteMessageByCd(String messageCd){
-        messageRepository.deleteByCd(messageCd);
+        messageRepository.deleteById(messageCd);
     }
 }

@@ -11,7 +11,7 @@ import javax.persistence.Id;
 @Builder
 public class MessageDTO {
     private String cd;
-    private String typeCd;
+    private String type;
     private String description;
     private String regDt;
     private String regId;

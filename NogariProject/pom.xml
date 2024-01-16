@@ -38,7 +38,7 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <!-- Spring Boot Starter -->
+        <!-- Spring Boot StaMessageControllerTest.createMessageTestrter -->
 
         <!-- DataBase 관련  -->
 <!--        <dependency>-->
