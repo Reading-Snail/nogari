@@ -13,7 +13,7 @@ import java.sql.Date;
 @AllArgsConstructor
 public class MessageDto {
 
-    private Long msgCd;
+    private String msgCd;
     @NotNull(message = "type 값이 없습니다")
     private String type;
     @NotNull(message = "description 값이 없습니다")

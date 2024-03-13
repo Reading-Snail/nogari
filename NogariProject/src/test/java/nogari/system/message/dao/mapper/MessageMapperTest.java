@@ -1,5 +1,6 @@
 package nogari.system.message.dao.mapper;
 
+import nogari.system.message.dao.MessageMapper;
 import nogari.system.message.domain.dto.MessageReqDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

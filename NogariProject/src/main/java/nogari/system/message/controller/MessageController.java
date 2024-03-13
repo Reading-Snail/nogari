@@ -2,12 +2,15 @@ package nogari.system.message.controller;
 
 import lombok.RequiredArgsConstructor;
 import nogari.system.message.domain.dto.MessageReqDTO;
+import nogari.system.message.domain.entity.Message;
 import nogari.system.message.service.MessageService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -22,8 +25,8 @@ public class MessageController {
      */
     @GetMapping("")
     public ResponseEntity<List<MessageReqDTO>> messageList(){
-        List<MessageReqDTO> messages = messageService.findMessages();
-        return new ResponseEntity<>(messages,HttpStatus.OK);
+        List<MessageReqDTO> messagesReqDTOs = messageService.findMessages();
+        return new ResponseEntity<>(messagesReqDTOs,HttpStatus.OK);
     }
     /**
      * 메시지 단건 조회
@@ -32,8 +35,8 @@ public class MessageController {
      */
     @GetMapping("/{msgCd}")
     public ResponseEntity<MessageReqDTO> messageDetails(@PathVariable String msgCd){
-        MessageReqDTO message = messageService.findMessageByMsgCd(msgCd);
-        return new ResponseEntity<>(message, HttpStatus.OK);
+        MessageReqDTO messageReqDTO = messageService.findMessageByMsgCd(msgCd);
+        return new ResponseEntity<>(messageReqDTO, HttpStatus.OK);
     }
     /**
      * 메시지 단건 생성
@@ -41,9 +44,12 @@ public class MessageController {
      * @return
      */
     @PostMapping("")
-    public ResponseEntity<Integer> messageAdd(@RequestBody MessageReqDTO messageReqDto){
-        Integer createdRow = messageService.createMessage(messageReqDto);
-        return new ResponseEntity<>(createdRow, HttpStatus.CREATED);
+    public ResponseEntity<Void> messageAdd(@RequestBody MessageReqDTO messageReqDto, UriComponentsBuilder uriBuilder){
+        Message saved =  messageService.saveMessage(messageReqDto);
+        URI urilocation = uriBuilder.path("messages/{MsgCd}")
+                .buildAndExpand(saved.getMsgCd())
+                .toUri();
+        return ResponseEntity.created(urilocation).build();
     }
     /**
      * 메시지 단건 수정
@@ -52,9 +58,9 @@ public class MessageController {
      * @return
      */
     @PutMapping("/{msgCd}")
-    public ResponseEntity<Integer> messageModify(@PathVariable String msgCd, @RequestBody @Valid MessageReqDTO messageReqDTO){
-        int updatedRows = messageService.editMessage(messageReqDTO);
-        return new ResponseEntity<>(updatedRows, HttpStatus.OK);
+    public ResponseEntity<Void> messageModify(@PathVariable String msgCd, @RequestBody @Valid MessageReqDTO messageReqDTO){
+        messageService.saveMessage(messageReqDTO);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
     /**
      * 메시지 단건 삭제
@@ -62,9 +68,9 @@ public class MessageController {
      * @return
      */
     @DeleteMapping("/{msgCd}")
-    public ResponseEntity<Integer> messageRemove(@PathVariable String msgCd){
-        int deletedRows = messageService.deleteMessage(msgCd);
-        return new ResponseEntity<>(deletedRows, HttpStatus.OK);
+    public ResponseEntity<Void> messageRemove(@PathVariable String msgCd){
+        messageService.deleteMessage(msgCd);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
     /**
      * 메시지 다건 삭제
@@ -72,8 +78,8 @@ public class MessageController {
      * @return
      */
     @PostMapping("/delete-multi")
-    public ResponseEntity<Integer> messagesRemove(@RequestBody List<String> msgCds){
-        int deletedRow = messageService.deleteMessages(msgCds);
-        return new ResponseEntity<>(deletedRow,HttpStatus.OK);
+    public ResponseEntity<Void> messagesRemove(@RequestBody List<String> msgCds){
+        messageService.deleteMessages(msgCds);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

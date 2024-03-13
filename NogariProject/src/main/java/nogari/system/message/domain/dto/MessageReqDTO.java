@@ -1,6 +1,7 @@
 package nogari.system.message.domain.dto;
 
 import lombok.*;
+import nogari.system.message.domain.entity.Message;
 import org.apache.ibatis.type.Alias;
 
 import javax.validation.constraints.NotNull;
@@ -24,4 +25,13 @@ public class MessageReqDTO {
     private String updId;
 
 
+    public Message toEntity() {
+        return Message.builder()
+                .msgCd(this.msgCd)
+                .type(this.type)
+                .description(this.description)
+                .regId(this.regId)
+                .updId(this.updId)
+                .build();
+    }
 }

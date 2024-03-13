@@ -4,10 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import nogari.system.message.domain.dto.MessageReqDTO;
 import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.sql.Date;
 
@@ -18,8 +18,8 @@ import java.sql.Date;
 @AllArgsConstructor
 public class Message {
 
-    @Id @GeneratedValue
-    private Long msgCd;
+    @Id
+    private String msgCd;
     private String type;
     private String description;
     @ColumnDefault(value = "CURRENT_TIMESTAMP")
@@ -29,7 +29,13 @@ public class Message {
     private Date updDt;
     private String updId;
 
-    public void setId(Long msgCd){
-        this.msgCd = msgCd;
+    public MessageReqDTO toReqDTO() {
+        return MessageReqDTO.builder()
+                .msgCd(this.msgCd)
+                .type(this.type)
+                .description(this.description)
+                .regId(this.regId)
+                .updId(this.updId)
+                .build();
     }
 }

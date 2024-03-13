@@ -105,7 +105,7 @@ class MessageControllerTest {
                 .regId("admin")
                 .updId("user")
                 .build();
-        when(messageService.createMessage(messageReqDTO)).thenReturn(1);
+        when(messageService.saveMessage(messageReqDTO)).thenReturn(messageReqDTO.toEntity());
         mockMvc.perform(post("/messages")
                 .contentType("application/json")
                 .content(jsonContent))

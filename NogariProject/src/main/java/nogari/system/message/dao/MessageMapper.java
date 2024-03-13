@@ -1,4 +1,4 @@
-package nogari.system.message.dao.mapper;
+package nogari.system.message.dao;
 
 import nogari.system.message.domain.dto.MessageReqDTO;
 import org.apache.ibatis.annotations.Mapper;
@@ -12,9 +12,9 @@ public interface MessageMapper {
 
     List<MessageReqDTO> selectMessage();
     MessageReqDTO selectMessageByMsgCd(String msgCd);
-    int insertMessage(MessageReqDTO messageReqDTO);
-    int updateMessage(MessageReqDTO messageReqDTO);
-    int deleteMessage(String msgCd);
+    void insertMessage(MessageReqDTO messageReqDTO);
+    void updateMessage(MessageReqDTO messageReqDTO);
+    void deleteMessage(String msgCd);
 
 
 }
